@@ -1,0 +1,20 @@
+ip=`ifconfig | grep -o -m 2 -E "\d+\.\d+\.\d+\.\d+" | sed -n 2p`
+alias yt='docker run -e "http_proxy=http://$ip:1087" -e "https_proxy=http://$ip:1087" --rm -v $PWD:/data vimagick/youtube-dl'
+alias youget='docker run --rm -v $PWD:/downloads ondrejmo/you-get'
+alias lessc='docker run -it --rm -v $(pwd):$(pwd) -w $(pwd) ewoutp/lessc '
+alias sassc='docker run --rm -v $(pwd):/data codycraven/sassc '
+alias cling='docker run -it maddouri/cling-ubuntu-docker_auto'
+
+proxy() {
+    export http_proxy=http://127.0.0.1:1087;
+    export https_proxy=http://127.0.0.1:1087;
+    echo "已开启代理"
+}
+
+noproxy() {
+    unset http_proxy
+    unset https_proxy
+    echo "已关闭代理"
+}
+
+export PATH=$PATH:~/
