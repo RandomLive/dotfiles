@@ -1,7 +1,7 @@
-ln -s git.sh ~/git.sh
-ln -s initsh.sh ~/.initsh
-ln -s tmux.conf ~/.tmux.conf
-ln -s vim ~/.vim
-ln -s vimrc ~/.vimrc
+cp -rf git.sh ~/git.sh
+cp -rf initsh ~/.initsh
+cp -rf tmux.conf ~/.tmux.conf
+cp -rf vim ~/.vim
+cp -rf vimrc ~/.vimrc
 
 sed -i -e "\$asource ~/.initsh" ~/.zshrc
