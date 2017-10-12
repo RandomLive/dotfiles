@@ -1,10 +1,17 @@
 export PATH=/data/php/bin:$PATH
 ip=`ifconfig | grep -o -m 2 -E "\d+\.\d+\.\d+\.\d+" | sed -n 2p`
+
 alias yt='docker run -e "http_proxy=http://$ip:1087" -e "https_proxy=http://$ip:1087" --rm -v $PWD:/data vimagick/youtube-dl'
 alias youget='docker run --rm -v $PWD:/downloads ondrejmo/you-get'
 alias lessc='docker run -it --rm -v $(pwd):$(pwd) -w $(pwd) ewoutp/lessc '
 alias sassc='docker run --rm -v $(pwd):/data codycraven/sassc '
 alias cling='docker run --rm -it maddouri/cling-ubuntu-docker_auto'
+alias yarn='docker run -it --rm -v `pwd`:/data digitallyseamless/nodejs-bower-grunt yarn'
+alias bower='docker run -it --rm -v `pwd`:/data digitallyseamless/nodejs-bower-grunt bower'
+alias grunt='docker run -it --rm -v `pwd`:/data digitallyseamless/nodejs-bower-grunt grunt'
+alias npm='docker run -it --rm -v `pwd`:/data digitallyseamless/nodejs-bower-grunt npm'
+alias composer='docker run --rm --interactive --tty --volume $PWD:/app composer'
+alias gulp='docker run --rm -it -v `pwd`:/workspace monostream/nodejs-gulp-bower gulp'
 
 proxy() {
     export http_proxy=http://127.0.0.1:1087;
