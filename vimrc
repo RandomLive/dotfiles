@@ -158,7 +158,7 @@ nnoremap <C-right> :bp<CR>
 
 " }}}
 
-filetype off
+" filetype off
 
 " Function {{{
 " Remove trailing whitespace when writing a buffer, but not for diff files.
