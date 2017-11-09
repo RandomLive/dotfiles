@@ -178,15 +178,17 @@ autocmd BufWritePre * call RemoveTrailingWhitespace()
 
 " 禁用鼠标
 set mouse-=a
-set autochdir
-" 加载ctrlp插件
-set runtimepath^=~/.vim/bundle/ctrlp.vim
 nnoremap <silent> <F8> :TlistToggle<CR>
 " 让netrw显示树形风格的文件列表
 let g:netrw_banner = 0
 "let g:netrw_liststyle = 3
 " 关闭光标闪动
 set gcr=a:blinkon0
+
+" 开启
+execute pathogen#infect()
+" 加载ctrlp插件 由pathogen自动加载
+" set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 if has('gui_running')
     " 桌面vim独有的设置
