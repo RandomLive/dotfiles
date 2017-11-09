@@ -1,2 +1,6 @@
 e scr.utf8=true
 e asm.relsub=false
+
+e scr.wheel=false
+e stack.bytes=false
+e stack.size=114
