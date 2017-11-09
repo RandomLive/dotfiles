@@ -12,7 +12,7 @@ alias npm='docker run -it --rm -v `pwd`:/data digitallyseamless/nodejs-bower-gru
 alias composer='docker run --rm --interactive --tty --volume $PWD:/app --volume ~/composer:/tmp composer'
 alias gulp='docker run --rm -it -v `pwd`:/workspace monostream/nodejs-gulp-bower gulp'
 alias cheat='docker run  --rm suxiaolin1993/cheat'
-alias r2='docker run --rm -it -v $PWD:/home/r2 -v ~/.config/radare2/.radare2rc:/home/r2/.radare2rc radare/radare2 r2'
+alias dr2='docker run --rm -it -v $PWD:/home/r2 -v ~/.config/radare2/.radare2rc:/home/r2/.radare2rc radare/radare2 r2'
 
 # for anybar
 function anybar { echo -n $1 | nc -4u -w0 localhost ${2:-1738}; }
@@ -29,5 +29,6 @@ noproxy() {
     echo "已关闭代理"
 }
 
-export PATH=~/Applications/vim8/bin:/data/php/bin:$PATH
+export PATH=$(brew --prefix homebrew/php/php71)/bin:~/Applications/vim8/bin:~/Applications/r2/bin:/data/php/bin:$PATH
 export PATH=$PATH:~/
+export R2PM_DBDIR=/Users/suxiaolin/Applications/r2pm
