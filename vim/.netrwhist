@@ -1,4 +1,11 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
-let g:netrw_dirhist_1='/Users/suxiaolin'
-let g:netrw_dirhist_2='/Users/suxiaolin/Docker'
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/data/webroot/edu55/resources'
+let g:netrw_dirhist_2='/data/webroot/edu55/resources/views'
+let g:netrw_dirhist_3='/data/webroot/edu55/resources/views/home'
+let g:netrw_dirhist_4='/data/webroot/edu55/resources/views/home/video'
+let g:netrw_dirhist_5='/data/webroot/edu55/resources/views/home'
+let g:netrw_dirhist_6='/data/webroot/edu55/resources/views'
+let g:netrw_dirhist_7='/data/webroot/edu55/resources'
+let g:netrw_dirhist_8='/data/webroot/edu55'
+let g:netrw_dirhist_9='/data/webroot/edu55/app'
