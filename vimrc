@@ -187,18 +187,23 @@ set gcr=a:blinkon0
 
 " 开启 pathogen 插件
 execute pathogen#infect()
+" fzf
+map <C-p> :Files<CR>
 " 打开目录自动启动NERDTree
-autocmd vimenter * NERDTree
+"autocmd vimenter * NERDTree
 " 无文件时自动打开NERDTree
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+"autocmd StdinReadPre * let s:std_in=1
+"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " 打开目录时自动启动NERDTree
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+"autocmd StdinReadPre * let s:std_in=1
+"autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 map <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-" 加载ctrlp插件 由pathogen自动加载
-" set runtimepath^=~/.vim/bundle/ctrlp.vim
+" vim-plug插件管理器
+call plug#begin('~/.vim/plugged')
+    Plug '/Users/suxiaolin/.fzf'
+    Plug 'junegunn/fzf.vim'
+call plug#end()
 
 if has('gui_running')
     " 桌面vim独有的设置
