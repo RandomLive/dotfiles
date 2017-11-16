@@ -201,7 +201,7 @@ map <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " vim-plug插件管理器
 call plug#begin('~/.vim/plugged')
-    Plug '/Users/suxiaolin/.fzf'
+    Plug '~/.fzf'
     Plug 'junegunn/fzf.vim'
 call plug#end()
 
