@@ -1,5 +1,5 @@
 e scr.utf8=true
-e asm.relsub=false
+e asm.relsub=true
 
 e scr.wheel=false
 e stack.bytes=false
