@@ -29,6 +29,8 @@ noproxy() {
     echo "已关闭代理"
 }
 
-export PATH=$(brew --prefix homebrew/php/php71)/bin:~/Applications/vim8/bin:~/Applications/nasm:~/Applications/r2/bin:/data/php/bin:$PATH
+export PATH=~/Applications/vim8/bin:~/Applications/nasm:~/Applications/r2/bin:/data/php/bin:$(brew --prefix homebrew/php/php71)/bin:$PATH
 export PATH=$PATH:~/
 export R2PM_DBDIR=/Users/suxiaolin/Applications/r2pm
+
+clear
