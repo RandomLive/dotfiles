@@ -14,6 +14,10 @@ alias gulp='docker run --rm -it -v `pwd`:/workspace monostream/nodejs-gulp-bower
 alias cheat='docker run  --rm suxiaolin1993/cheat'
 alias dr2='docker run --rm -it -v $PWD:/home/r2 -v ~/.config/radare2/.radare2rc:/home/r2/.radare2rc radare/radare2 r2'
 alias httpserver='docker run -d -p 82:8080 --name=httpserver --rm -v $PWD:/data visualjeff/simple-http-server:0.0.1'
+alias sass='docker run -it --rm -v $(pwd):$(pwd) -w $(pwd) jbergknoff/sass'
+alias phpunit='docker run -v $(pwd):/app --rm phpunit/phpunit'
+alias phpunit5='docker run -v $(pwd):/app --rm phpunit/phpunit:5.7.12'
+alias phpunit4='docker run -v $(pwd):/app --rm phpunit/phpunit:4.8.5'
 
 # for anybar
 function anybar { echo -n $1 | nc -4u -w0 localhost ${2:-1738}; }
