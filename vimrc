@@ -203,6 +203,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 call plug#begin('~/.vim/plugged')
     Plug '~/.fzf'
     Plug 'junegunn/fzf.vim'
+    Plug 'ajh17/VimCompletesMe'
 call plug#end()
 
 if has('gui_running')
