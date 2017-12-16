@@ -207,6 +207,7 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 " 关闭nerdtree的顶部帮助信息
 let NERDTreeMinimalUI=1
+let Tlist_Show_One_File = 1
 
 if has('gui_running')
     " 桌面vim独有的设置
