@@ -205,6 +205,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'junegunn/fzf.vim'
     Plug 'ajh17/VimCompletesMe'
 call plug#end()
+" 关闭nerdtree的顶部帮助信息
+let NERDTreeMinimalUI=1
 
 if has('gui_running')
     " 桌面vim独有的设置
