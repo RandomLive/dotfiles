@@ -208,6 +208,11 @@ call plug#end()
 " 关闭nerdtree的顶部帮助信息
 let NERDTreeMinimalUI=1
 let Tlist_Show_One_File = 1
+" This is the default extra key bindings
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
 
 if has('gui_running')
     " 桌面vim独有的设置
