@@ -1,4 +1,7 @@
 " Startup {{{
+if has('win32') || has('win64')
+    set runtimepath^=$VIMRUNTIME/vim
+endif
 filetype indent plugin on
 
 augroup vimrcEx
@@ -49,13 +52,21 @@ let $LANG = 'en_US.UTF-8'
 
 " GUI {{{
 
+" 禁用鼠标
+set mouse-=a
+" 关闭光标闪动
+set gcr=a:blinkon0
 set cursorline
 set hlsearch
 set number
 " 分割出来的窗口位于当前窗口下边/右边
 set splitbelow
 set splitright
-set guifont=Courier_New:h18
+if has('win32') || has('win64')
+    set guifont=Courier_New:h18
+else
+    set guifont=Courier_New:h14
+endif
 
 set statusline=%F
 set statusline+=%m
@@ -158,8 +169,6 @@ nnoremap <C-right> :bp<CR>
 
 " }}}
 
-" filetype off
-
 " Function {{{
 " Remove trailing whitespace when writing a buffer, but not for diff files.
 " From: Vigil
@@ -176,17 +185,12 @@ endfunction
 autocmd BufWritePre * call RemoveTrailingWhitespace()
 " }}}
 
-" 禁用鼠标
-set mouse-=a
+" Plugin {{{
 nnoremap <silent> <F8> :TlistToggle<CR>
 " 让netrw显示树形风格的文件列表
 let g:netrw_banner = 0
 "let g:netrw_liststyle = 3
-" 关闭光标闪动
-set gcr=a:blinkon0
 
-" 开启 pathogen 插件
-execute pathogen#infect()
 " fzf
 map <C-p> :Files<CR>
 " 打开目录自动启动NERDTree
@@ -199,6 +203,9 @@ map <C-p> :Files<CR>
 "autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 map <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" 开启 pathogen 插件
+execute pathogen#infect()
 " vim-plug插件管理器
 call plug#begin('~/.vim/plugged')
     Plug '~/.fzf'
@@ -214,16 +221,17 @@ let g:fzf_action = {
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit' }
 
-if has('gui_running')
+" }}}
+
+" GUI & CMD Diffrence {{{
+if has('win32') || has('win64')
     " 桌面vim独有的设置
 
     " 自动打开家目录
-    " autocmd VimEnter * ex .
-    " GUI {{{
 
     "set background=dark
     set background=light
-    " colorscheme solarized
+    "colorscheme solarized
     colorscheme PaperColor
 
     source $VIMRUNTIME/delmenu.vim
@@ -246,9 +254,9 @@ if has('gui_running')
     set guioptions-=e
     " set nolist
     set listchars=trail:·,extends:>,precedes:<
-    " }}}
 else
     " 命令行vim独有的设置
     " 去掉当前行黑色下划线
     hi CursorLine term=bold cterm=bold guibg=Grey40
 endif
+" }}}
