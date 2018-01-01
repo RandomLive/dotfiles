@@ -1,12 +1,12 @@
 patch:
 
   show_notifications_when: appropriate                   # 状态通知，适当，也可设为全开（always）全关（never）
-  
+
   style:
     color_scheme: apathy
   preset_color_schemes:
-    
-    apathy:   
+
+    apathy:
       name: 純粹的形式／Purity of Form
       author: 雨過之後、佛振
 
@@ -37,4 +37,4 @@ patch:
       hilited_comment_text_color: 0x444444               # 注解文字高亮
 
   "app_options/com.runningwithcrayons.Alfred-3/ascii_mode": true
-      
+  "app_options/com.parallels.desktop.console/ascii_mode": true

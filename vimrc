@@ -64,6 +64,8 @@ set splitbelow
 set splitright
 if has('win32') || has('win64')
     set guifont=Courier_New:h18
+elseif has("gui_macvim")
+    set guifont=Courier_New:h16
 else
     set guifont=Courier_New:h14
 endif
@@ -225,10 +227,6 @@ let g:fzf_action = {
 
 " GUI & CMD Diffrence {{{
 if has('win32') || has('win64')
-    " 桌面vim独有的设置
-
-    " 自动打开家目录
-
     "set background=dark
     set background=light
     "colorscheme solarized
@@ -254,6 +252,8 @@ if has('win32') || has('win64')
     set guioptions-=e
     " set nolist
     set listchars=trail:·,extends:>,precedes:<
+elseif  has("gui_macvim")
+    colorscheme PaperColor
 else
     " 命令行vim独有的设置
     " 去掉当前行黑色下划线
