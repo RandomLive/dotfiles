@@ -19,7 +19,7 @@ alias webpack='docker run --rm -i -t -v $PWD:/app jmfirth/webpack webpack'
 alias phpunit='docker run -v $(pwd):/app --rm phpunit/phpunit'
 alias phpunit5='docker run -v $(pwd):/app --rm phpunit/phpunit:5.7.12'
 alias phpunit4='docker run -v $(pwd):/app --rm phpunit/phpunit:4.8.5'
-alias deepo='docker run -it -v ~/deepo/data:/data -v ~/deepo/config:/config ufoym/deepo:all-py27-cpu bash'
+alias deepo='docker run --rm -it -v ~/deepo/data:/data -v ~/deepo/config:/config ufoym/deepo:all-py27-cpu bash'
 alias youget='docker run -e "http_proxy=http://$ip:1087" -e "https_proxy=http://$ip:1087" --rm kmdgeek/you-get'
 
 # for anybar
