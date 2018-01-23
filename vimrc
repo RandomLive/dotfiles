@@ -213,6 +213,7 @@ call plug#begin('~/.vim/plugged')
     Plug '~/.fzf'
     Plug 'junegunn/fzf.vim'
     Plug 'ajh17/VimCompletesMe'
+    Plug 'vim-scripts/mru.vim'
 call plug#end()
 " 关闭nerdtree的顶部帮助信息
 let NERDTreeMinimalUI=1
