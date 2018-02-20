@@ -4,7 +4,7 @@ alias yt='docker run -e "http_proxy=http://$ip:1087" -e "https_proxy=http://$ip:
 alias youget='docker run --rm -v $PWD:/downloads ondrejmo/you-get'
 alias lessc='docker run -it --rm -v $(pwd):$(pwd) -w $(pwd) ewoutp/lessc '
 alias sassc='docker run --rm -v $(pwd):/data codycraven/sassc '
-alias cling='docker run --rm -it maddouri/cling-ubuntu-docker_auto'
+alias cling='docker run --rm -v `pwd`:/code -it maddouri/cling-ubuntu-docker_auto'
 alias yarn='docker run -it --rm -v `pwd`:/data digitallyseamless/nodejs-bower-grunt yarn'
 alias bower='docker run -it --rm -v `pwd`:/data digitallyseamless/nodejs-bower-grunt bower'
 alias grunt='docker run -it --rm -v `pwd`:/data digitallyseamless/nodejs-bower-grunt grunt'

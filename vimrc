@@ -65,9 +65,9 @@ set splitright
 if has('win32') || has('win64')
     set guifont=Courier_New:h18
 elseif has("gui_macvim")
-    set guifont=Courier_New:h16
+    set guifont=Inconsolata:h16
 else
-    set guifont=Courier_New:h14
+    set guifont=Inconsolata:h14
 endif
 
 set statusline=%F
@@ -259,5 +259,9 @@ else
     " 命令行vim独有的设置
     " 去掉当前行黑色下划线
     hi CursorLine term=bold cterm=bold guibg=Grey40
+
+    set t_Co=256   " This is may or may not needed.
+    set background=light
+    colorscheme PaperColor
 endif
 " }}}
