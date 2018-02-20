@@ -32,7 +32,8 @@ set nocompatible
 set nobackup
 set noswapfile
 set history=1024
-set autochdir
+" set autochdir
+set noautochdir
 set whichwrap=b,s,<,>,[,]
 set nobomb
 set backspace=indent,eol,start whichwrap+=<,>,[,]
@@ -203,8 +204,17 @@ map <C-p> :Files<CR>
 " 打开目录时自动启动NERDTree
 "autocmd StdinReadPre * let s:std_in=1
 "autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-map <C-n> :NERDTreeToggle<CR>
+map ,n :NERDTreeFind<CR>
+map ,m :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" MRU
+map ,u :MRU<CR>
+
+" noh clear search highlight
+map ,c :noh<CR>
+" window list open tabs
+map ,z :W<CR>
 
 " 开启 pathogen 插件
 execute pathogen#infect()
