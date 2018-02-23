@@ -100,7 +100,7 @@ syntax on
 " Keymap {{{
 let mapleader=","
 
-nmap <leader>s :source $MYVIMRC<cr>
+"nmap <leader>s :source $MYVIMRC<cr>
 nmap <leader>e :e $MYVIMRC<cr>
 
 nmap <leader>tn :tabnew<cr>
@@ -209,12 +209,18 @@ map ,m :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " MRU
+let MRU_Window_Height = 25
 map ,u :MRU<CR>
 
 " noh clear search highlight
 map ,c :noh<CR>
 " window list open tabs
 map ,z :W<CR>
+
+" map q
+map ,q :q<CR>
+" map save file
+map ,s :w<CR>
 
 " 开启 pathogen 插件
 execute pathogen#infect()
