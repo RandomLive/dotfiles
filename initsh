@@ -1,5 +1,5 @@
 # oh my zsh display ssh user name and server hostname
-export PROMPT="$fg[cyan]%}$USER@%{$fg[blue]%}%m ${PROMPT}"
+export PROMPT='$fg[cyan]%}$USER@%{$fg[blue]%}%m ${ret_status} %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)';
 
 ip=`ifconfig | grep -o -m 2 -E "\d+\.\d+\.\d+\.\d+" | sed -n 2p`
 
@@ -103,8 +103,9 @@ noproxy() {
     echo "已关闭代理"
 }
 
-export PATH=~/Applications/vim8/bin:~/Applications/nasm:~/Applications/r2/bin:/data/php/bin:$(brew --prefix homebrew/php/php71)/bin:$PATH
-export PATH=$PATH:~/
-export R2PM_DBDIR=/Users/suxiaolin/Applications/r2pm
-
-clear
+if [[ $OSTYPE == darwin* ]];then
+    export PATH=~/Applications/vim8/bin:~/Applications/nasm:~/Applications/r2/bin:/data/php/bin:$(brew --prefix php@7.1)/bin:$PATH
+    export PATH=$PATH:~/
+    export R2PM_DBDIR=/Users/suxiaolin/Applications/r2pm
+else
+fi;
