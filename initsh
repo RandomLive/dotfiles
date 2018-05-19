@@ -1,3 +1,6 @@
+# oh my zsh display ssh user name and server hostname
+export PROMPT="$fg[cyan]%}$USER@%{$fg[blue]%}%m ${PROMPT}"
+
 ip=`ifconfig | grep -o -m 2 -E "\d+\.\d+\.\d+\.\d+" | sed -n 2p`
 
 alias yt='docker run -e "http_proxy=http://$ip:1087" -e "https_proxy=http://$ip:1087" --rm -v $PWD:/data vimagick/youtube-dl'
@@ -31,10 +34,20 @@ proxy() {
     echo "已开启代理"
 }
 
+# go development enviroment
+goup() {
+	GOPATH=~/gopath
+	docker run -it --rm \
+	--volume $GOPATH/src:/go/src \
+	--workdir /go/src \
+	deis/go-dev:latest \
+	bash
+}
+
 # laradocker start down restart
 dup() {
-    #cd ~/Sites/laradock && docker-compose up -d nginx mysql redis mongo php-worker
-    cd ~/Sites/laradock && docker-compose up -d nginx mysql mysql-slave redis mongo
+    #cd ~/Sites/laradock && docker-compose up -d nginx mysql mysql-slave redis mongo php-worker
+    cd ~/Sites/laradock && docker-compose up -d nginx mysql redis php-worker
     cd -
 }
 
@@ -49,10 +62,10 @@ drestart() {
 }
 
 mmaster() {
-    docker exec -it laradock_mysql_1 mysql -uroot -proot
+    mysqlsh --sql -h127.0.0.1 -uroot -proot
 }
 mslave() {
-    docker exec -it laradock_mysql-slave_1 mysql -uroot -proot
+    mysqlsh --sql -h127.0.0.1 -P3307 -uroot -proot
 }
 dredis() {
     docker exec -it laradock_redis_1 redis-cli
@@ -67,7 +80,7 @@ percona-tools() {
 
 # openresty
 oup() {
-    docker run --rm --name openresty -d -p 8877:80 -v ~/Documents/Docker/openresty/conf.d:/etc/nginx/conf.d -v ~/Documents/Docker/openresty/html:/usr/local/openresty/nginx/html openresty/openresty:alpine
+    docker run --rm --name openresty -d -p 8877:80 -v ~/Documents/Docker/openresty/conf.d:/etc/nginx/conf.d -v ~/Documents/Docker/openresty/html:/usr/local/openresty/nginx/html -v ~/Documents/Docker/openresty/log:/var/log/nginx/  openresty/openresty:alpine
 }
 
 odown() {
@@ -75,8 +88,12 @@ odown() {
 }
 
 orestart() {
-    oup;
     odown;
+    oup;
+}
+
+osh() {
+    docker exec -it -w /etc/nginx openresty sh
 }
 # openresty end
 
