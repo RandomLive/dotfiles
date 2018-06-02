@@ -24,8 +24,13 @@ alias phpunit5='docker run -v $(pwd):/app --rm phpunit/phpunit:5.7.12'
 alias phpunit4='docker run -v $(pwd):/app --rm phpunit/phpunit:4.8.5'
 alias deepo='docker run --rm -it -v ~/deepo/data:/data -v ~/deepo/config:/config ufoym/deepo:all-py27-cpu bash'
 alias youget='docker run -e "http_proxy=http://$ip:1087" -e "https_proxy=http://$ip:1087" --rm kmdgeek/you-get'
-alias phpformat='docker run -it --rm -v $(pwd):/project -w /project jakzal/phpqa:alpine php-cs-fixer fix --rules=@PSR2 '
+alias phpformat='docker run -it --rm -v $(pwd):/project -w /project jakzal/phpqa:alpine php-cs-fixer fix --dry-run --rules=@PSR2 '
 alias box='docker run -it --rm -v $(pwd):/project -w /project jakzal/phpqa:alpine box '
+
+# ip alias
+ipalias() {
+    sudo ifconfig en0 alias 172.16.123.1
+}
 
 # for anybar
 function anybar { echo -n $1 | nc -4u -w0 localhost ${2:-1738}; }
@@ -85,6 +90,10 @@ oup() {
     docker run --rm --name openresty -d -p 8877:80 -v ~/Documents/Docker/openresty/conf.d:/etc/nginx/conf.d -v ~/Documents/Docker/openresty/html:/usr/local/openresty/nginx/html -v ~/Documents/Docker/openresty/log:/var/log/nginx/  openresty/openresty:alpine
 }
 
+oin() {
+    docker exec -it -w /etc/nginx openresty sh
+}
+
 odown() {
     docker stop openresty
 }
@@ -98,6 +107,23 @@ osh() {
     docker exec -it -w /etc/nginx openresty sh
 }
 # openresty end
+
+# nsq start
+nsqup() {
+    cd ~/Documents/Docker/nsq && docker-compose up -d
+    cd -
+}
+
+nsqdown() {
+    cd ~/Documents/Docker/nsq && docker-compose down
+    cd -
+}
+
+nsqstart() {
+    nsqdown;
+    nsqup;
+}
+# nsq end
 
 noproxy() {
     unset http_proxy
