@@ -73,8 +73,10 @@ endif
 
 set statusline=%F
 set statusline+=%m
-"set statusline+=\ %{fugitive#head()}
+set statusline+=\ %{fugitive#head()}
 set statusline+=%=
+set statusline+=TIME:\ %{strftime('%Y-%m-%d\ %H:%I:%S')}
+set statusline+=\ -\      " Separator
 set statusline+=%{''.(&fenc!=''?&fenc:&enc).''}
 set statusline+=/
 set statusline +=%{&ff}            "file format
@@ -230,6 +232,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'junegunn/fzf.vim'
     Plug 'ajh17/VimCompletesMe'
     Plug 'vim-scripts/mru.vim'
+    Plug 'tpope/vim-fugitive'
 call plug#end()
 " 关闭nerdtree的顶部帮助信息
 let NERDTreeMinimalUI=1
@@ -239,6 +242,8 @@ let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit' }
+" default options for ag
+let s:ag_options = ' --php -U -Q'
 
 " }}}
 
@@ -277,6 +282,7 @@ else
     hi CursorLine term=bold cterm=bold guibg=Grey40
 
     set t_Co=256   " This is may or may not needed.
+    "set background=dark
     set background=light
     colorscheme PaperColor
 endif
