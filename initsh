@@ -1,5 +1,13 @@
 # oh my zsh display ssh user name and server hostname
-export PROMPT='$fg[cyan]%}$USER@%{$fg[blue]%}%m ${ret_status} %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)';
+# export PROMPT="$fg[cyan]%}$USER@%{$fg[blue]%}%m ${ret_status} %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)";
+
+# export PROMPT='%{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
+
+# ip alias
+ipalias() {
+    sudo ifconfig en0 alias 172.16.123.1
+}
+ipalias
 
 ip=`ifconfig | grep -o -m 2 -E "\d+\.\d+\.\d+\.\d+" | sed -n 2p`
 
@@ -29,11 +37,6 @@ alias box='docker run -it --rm -v $(pwd):/project -w /project jakzal/phpqa:alpin
 alias gore='docker run --rm --name gore -it gore sh'
 alias ansible='docker run --rm --name gore -it williamyeh/ansible:alpine3 ansible '
 
-# ip alias
-ipalias() {
-    sudo ifconfig en0 alias 172.16.123.1
-}
-
 # for anybar
 function anybar { echo -n $1 | nc -4u -w0 localhost ${2:-1738}; }
 
@@ -56,7 +59,7 @@ goup() {
 # laradocker start down restart
 dup() {
     #cd ~/Sites/laradock && docker-compose up -d nginx mysql mysql-slave redis mongo php-worker
-    cd ~/Sites/laradock && docker-compose up -d nginx redis php-worker mysql jenkins maildev phpmyadmin
+    cd ~/Sites/laradock && docker-compose up -d nginx redis php-worker mysql jenkins gitlab maildev rabbitmq
     cd -
 }
 
@@ -138,8 +141,17 @@ noproxy() {
 }
 
 if [[ $OSTYPE == darwin* ]];then
-    export PATH=~/Applications/vim8/bin:~/Applications/nasm:~/Applications/r2/bin:/data/php/bin:$(brew --prefix php@7.1)/bin:$PATH
+    export PATH=~:~/develop/maven/bin:~/develop/maven/bin:~/Applications/vim8/bin:~/Applications/nasm:~/Applications/r2/bin:/data/php/bin:$(brew --prefix php@7.1)/bin:~/develop/node/bin:$PATH
     export PATH=$PATH:~/
     export R2PM_DBDIR=/Users/suxiaolin/Applications/r2pm
 else
 fi;
+
+# 跑spring boot程序
+mrun() {
+    mvn spring-boot:run -Drun.jvmArguments="-Xmx128m -Xms64m" -Dspring-boot.run.arguments="-Denv=local --server.port=$1"
+}
+
+yrun() {
+
+}
