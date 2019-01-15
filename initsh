@@ -48,12 +48,12 @@ proxy() {
 
 # go development enviroment
 goup() {
-	GOPATH=~/gopath
-	docker run -it --rm \
-	--volume $GOPATH/src:/go/src \
-	--workdir /go/src \
-	deis/go-dev:latest \
-	bash
+    GOPATH=~/gopath
+    docker run -it --rm \
+    --volume $GOPATH/src:/go/src \
+    --workdir /go/src \
+    deis/go-dev:latest \
+    bash
 }
 
 # laradocker start down restart
@@ -147,11 +147,57 @@ if [[ $OSTYPE == darwin* ]];then
 else
 fi;
 
-# 跑spring boot程序
 mrun() {
-    mvn spring-boot:run -Drun.jvmArguments="-Xmx128m -Xms64m" -Dspring-boot.run.arguments="-Denv=local --server.port=$1"
+    port="-Dserver.port=$1"
+    env="-Denv=local"
+    memory="-Xms64m -Xmx128m"
+    yourkit="-agentpath:/Applications/YourKit-Java-Profiler-2018.04.app/Contents/Resources/bin/mac/libyjpagent.jnilib"
+    xrebel="-javaagent:/Users/suxiaolin/develop/xrebel/xrebel.jar"
+    command="mvn spring-boot:run -Dspring-boot.run.jvmArguments=\"$memory $env $port $yourkit $xrebel\""
+    echo "command: $command"
+    sh -c $command
 }
 
-yrun() {
+brun() {
+    port="8080"
+    if [ $1 = "order" ]
+    then
+        port=8035
+    elif [ $1 = "shopdevice" ]
+    then
+        port=8035
+    elif [ $1 = "sass" ]
+    then
+        port=8037
+    elif [ $1 = "app" ]
+    then
+        port=8039
+    elif [ $1 = "gateway" ]
+    then
+        port=8040
+    elif [ $1 = "push" ]
+    then
+        port=8041
+    elif [ $1 = "organization" ]
+    then
+        port=8045
+    fi
+    mrun $port
+}
 
+mntfs() {
+    deviceNode=`diskutil info /Volumes/$1 | grep -oh "/dev/.*"`
+    hdiutil eject "/Volumes/$1"
+    sudo mkdir /Volumes/$1
+    sudo mount_ntfs -o rw,nobrowse /dev/$deviceNode /Volumes/$1/
+}
+
+dattr() {
+    xattr -l $1
+    xattr -d com.apple.FinderInfo $1
+}
+
+jr() {
+    javac $1
+    java "${1%.*}"
 }
