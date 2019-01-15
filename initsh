@@ -141,7 +141,7 @@ noproxy() {
 }
 
 if [[ $OSTYPE == darwin* ]];then
-    export PATH=~:~/develop/maven/bin:~/develop/maven/bin:~/Applications/vim8/bin:~/Applications/nasm:~/Applications/r2/bin:/data/php/bin:$(brew --prefix php@7.1)/bin:~/develop/node/bin:$PATH
+    export PATH=~:~/develop/maven/bin:~/develop/maven/bin:~/Applications/vim8/bin:~/Applications/nasm:~/Applications/r2/bin:/data/php/bin:$(brew --prefix php@7.1)/bin:~/develop/node/bin:~/aspectj1.9/bin:$PATH
     export PATH=$PATH:~/
     export R2PM_DBDIR=/Users/suxiaolin/Applications/r2pm
 else
