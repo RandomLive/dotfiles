@@ -144,6 +144,7 @@ if [[ $OSTYPE == darwin* ]];then
     export PATH=~:~/develop/maven/bin:~/develop/maven/bin:~/Applications/vim8/bin:~/Applications/nasm:~/Applications/r2/bin:/data/php/bin:$(brew --prefix php@7.1)/bin:~/develop/node/bin:~/aspectj1.9/bin:$PATH
     export PATH=$PATH:~/
     export R2PM_DBDIR=/Users/suxiaolin/Applications/r2pm
+    export PATH=$PATH:~/develop/atlassian-cli-8.1.0
 else
 fi;
 
@@ -201,3 +202,6 @@ jr() {
     javac $1
     java "${1%.*}"
 }
+
+alias confluence="confluence.sh --server http://127.0.0.1:8090 --user admin --password \"admin\" "
+alias jira="jira.sh --server http://127.0.0.1:8080 --user admin --password \"admin\" "
