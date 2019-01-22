@@ -203,5 +203,7 @@ jr() {
     java "${1%.*}"
 }
 
+alias telnet="docker run mikesplain/telnet "
+
 alias confluence="confluence.sh --server http://127.0.0.1:8090 --user admin --password \"admin\" "
 alias jira="jira.sh --server http://127.0.0.1:8080 --user admin --password \"admin\" "
