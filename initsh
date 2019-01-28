@@ -144,6 +144,7 @@ if [[ $OSTYPE == darwin* ]];then
     export PATH=$PATH:~/
     export R2PM_DBDIR=/Users/suxiaolin/Applications/r2pm
     export PATH=$PATH:~/develop/atlassian-cli-8.1.0
+    export PATH=$PATH:~/develop/spring/bin
 else
 fi;
 
