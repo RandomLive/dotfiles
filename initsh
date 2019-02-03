@@ -218,3 +218,4 @@ jr() {
 
 alias confluence="confluence.sh --server http://confluence --user admin --password \"admin\" "
 alias jira="jira.sh --server http://jira --user admin --password \"admin\" "
+alias gls="gls -l --time-style=\"+%Y-%m-%d %H:%I:%S\" -halt --color"
