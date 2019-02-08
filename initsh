@@ -155,7 +155,8 @@ mrun() {
     memory="-Xms64m -Xmx128m"
     yourkit="-agentpath:/Applications/YourKit-Java-Profiler-2018.04.app/Contents/Resources/bin/mac/libyjpagent.jnilib"
     xrebel="-javaagent:/Users/suxiaolin/develop/xrebel/xrebel.jar"
-    command="mvn spring-boot:run -Dspring-boot.run.jvmArguments=\"$memory $apollo $port $yourkit $perfino $xrebel\""
+    jrebel="-agentpath:/Users/suxiaolin/develop/jrebel/lib/libjrebel64.dylib"
+    command="mvn spring-boot:run -Dspring-boot.run.jvmArguments=\"$memory $apollo $port $jrebel $xrebel\""
     echo "command: $command"
     sh -c $command
 }
@@ -195,6 +196,10 @@ brun() {
     then
         port=8046
         appId=100013
+    elif [ $1 = "jframework" ]
+    then
+        port=8010
+        appId=110001
     fi
     mrun $1 $port $appId
 }
